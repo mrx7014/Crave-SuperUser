@@ -13,7 +13,7 @@ read -p "Enter Y to install all requirments, or N to stop everything (Y/N)" user
 if [ $user_choose == Y ] | [ $user_choose == y ]
 then
 echo "Install required packages and create metadata.yml file"
-[[ -z $URL ]] && URL="https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
+cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt; sudo apt-get update -y;sudo apt-get upgrade -y;[[ -z $URL ]] && URL="https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
 IMAGE="${URL##*/}"
 OS="${IMAGE%%-*}"
 ARCH="${IMAGE##*-}"
