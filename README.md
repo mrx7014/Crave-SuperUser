@@ -39,7 +39,7 @@ sudo apt-get update -y ; sudo apt-get upgrade -y
 
 # Intallation Guide:
 
-- If you don't want to configure everything by yourself use this script:
+- If you don't want to configure everything by yourself use this script (Read all the README file too):
 ```sh
 git clone https://github.com/mrx7014/Crave-SuperUser;cd Crave-SuperUser;chmod +x Crave-SuperUser.sh;./Crave-SuperUser.sh
 ```
@@ -111,11 +111,12 @@ cd crave-devspaces; touch StartVM.sh ; echo "cd /crave-devspaces;git clone https
 ```sh
 ./StartVM.sh
 ```
+*it will take sometime at first boot,Don't worry*
 
-- To stop server use `halt`
+- If server freeze on `[  OK  ] Started Snap Daemon.` while booting just press `Enter`
+- To stop server use `halt`, if not working stop the session form  `foss.crave.io` dashboard
 
-*it will take sometime at first booting,Don't worry*
-_____
+<br />
 
 - Now after it booting and ask you about user name and password type this:
 
@@ -124,7 +125,7 @@ _____
 
 - Now server is started.
 
-__________
+<hr />
 
 # Now let's setup server.
 
