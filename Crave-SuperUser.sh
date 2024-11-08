@@ -11,7 +11,7 @@ echo "username: root"
 echo "password: segfault"
 echo""
 read -p "Enter Y to install all requirments, or N to stop everything (Y/N)" user_choose
-if [ $user_choose == Y ] | [ $user_choose == y ]
+if [ $user_choose == Y ]
 then
 echo "Install required packages and create metadata.yml file"
 cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt; sudo apt-get update -y;sudo apt-get upgrade -y;[[ -z $URL ]] && URL="https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
@@ -64,3 +64,8 @@ cd ; touch StartVM.sh ; echo "cd .vm/ubuntu ; qemu-system-x86_64 \
     -virtfs local,path=/crave-devspaces,mount_tag=host0,security_model=passthrough" >> StartVM.sh ; chmod +x StartVM.sh > /dev/null 2>1&
 sleep 1
 echo "Everything is Done,Now use StartVM.sh to start the VM"
+fi
+if [ $user_choose == N ]
+then
+clear;exit
+fi
