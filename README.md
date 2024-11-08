@@ -137,5 +137,5 @@ sudo apt update;git clone https://github.com/Crave-SuperUser;cd Crave-SuperUser;
 - Now everything is good
 
 ### Credits:
-- ![Crave](https://crave.io)
-- ![MRX7014](github.com/mrx7014)
+- <a href="https://crave.io">Crave</a>
+- <a href="github.com/mrx7014">MRX7014</a>
