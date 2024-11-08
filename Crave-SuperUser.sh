@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 echo "Crave SuperUser"
 echo ""
 sleep 2
