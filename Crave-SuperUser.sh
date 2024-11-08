@@ -59,7 +59,7 @@ sleep 3
 echo "Create bootable script"
 echo "Default RAM size is 2GB, If you want to change it edit the StartVM.sh script -m 32G"
 sleep 2
-cd /crave-devspaces; touch StartVM.sh ; echo "cd .vm/ubuntu ; qemu-system-x86_64 \
+cd /crave-devspaces; touch StartVM.sh ; echo "cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt; sudo apt-get update -y;sudo apt-get upgrade -y;cd .vm/ubuntu ; qemu-system-x86_64 \
     -m 2G \
     -nographic \
     -device virtio-net-pci,netdev=net0 \
