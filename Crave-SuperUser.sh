@@ -69,6 +69,9 @@ cd /crave-devspaces; touch StartVM.sh ; echo "cd /crave-devspaces;git clone http
     -virtfs local,path=/crave-devspaces,mount_tag=host0,security_model=passthrough" >> StartVM.sh ; chmod +x StartVM.sh > /dev/null 2>1&
 sleep 2
 echo "Everything is Done,Now use StartVM.sh to start the VM"
+echo "Login info:"
+echo "username: root"
+echo "password: segfault"
 fi
 if [ $user_choose == N ]
 then
