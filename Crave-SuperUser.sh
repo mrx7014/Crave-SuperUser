@@ -42,9 +42,9 @@ users:
       - $(ssh-keygen -y -f ~/.ssh/id_ed25519)
 bootcmd:
   #FreeBSD: - sed -i "" 's/#PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
-  - mkdir -p /crave-devspaces
+  - mkdir -p 
 mounts:
-  - [ host0, /crave-devspaces ]
+  - [ host0, / ]
 __EOF__
 # Edit this file for OpenBSD or FreeBSD
 clear
@@ -66,7 +66,7 @@ cd /crave-devspaces; touch StartVM.sh ; echo "cd /crave-devspaces;git clone http
     -netdev user,id=net0,hostfwd=tcp::2222-:22 \
     -drive "if=virtio,format=qcow2,file=ubuntu-22.04-server-cloudimg-amd64.img" \
     -drive "if=virtio,format=raw,file=seed.img" \
-    -virtfs local,path=/crave-devspaces,mount_tag=host0,security_model=passthrough" >> StartVM.sh ; chmod +x StartVM.sh > /dev/null 2>1&
+    -virtfs local,path=/,mount_tag=host0,security_model=passthrough" >> StartVM.sh ; chmod +x StartVM.sh > /dev/null 2>1&
 sleep 2
 echo "Everything is Done,Now use StartVM.sh to start the VM"
 echo "Login info:"
