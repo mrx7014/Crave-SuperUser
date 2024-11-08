@@ -14,7 +14,7 @@ read -p "Enter Y to install all requirments, or N to stop everything (Y/N)" user
 if [ $user_choose == Y ]
 then
 echo "Install required packages and create metadata.yml file"
-cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt; sudo apt-get update -y;sudo apt-get upgrade -y > /dev/null 2&>1;[[ -z $URL ]] && URL="https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
+cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt; sudo apt-get update -y;sudo apt-get upgrade -y;[[ -z $URL ]] && URL="https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
 IMAGE="${URL##*/}"
 OS="${IMAGE%%-*}"
 ARCH="${IMAGE##*-}"
@@ -44,21 +44,23 @@ bootcmd:
   #FreeBSD: - sed -i "" 's/#PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
   - mkdir -p /crave-devspaces
 mounts:
-  - [ host0, /crave-devspaces ] /dev/null 2>&1
+  - [ host0, /crave-devspaces ]
 __EOF__
 # Edit this file for OpenBSD or FreeBSD
+clear
 sleep 2
 echo "Create the seed.img file (aka cloud-init) and download and enlarge the cloud image"
 sleep 2
 cloud-localds seed.img user-data.yaml metadata.yaml
 [[ ! -f "${IMAGE:?}" ]] && wget "${URL}"
-qemu-img resize "${IMAGE}" 32G > /dev/null 2>&1
-sleep 1
+qemu-img resize "${IMAGE}" 32G
+clear
+sleep 3
 echo "Create bootable script"
-echo "Default RAM size is 32GB, If you want to change it edit the StartVM.sh script -m 32G"
+echo "Default RAM size is 2GB, If you want to change it edit the StartVM.sh script -m 32G"
 sleep 2
 cd /crave-devspaces; touch StartVM.sh ; echo "cd .vm/ubuntu ; qemu-system-x86_64 \
-    -m 32G \
+    -m 2G \
     -nographic \
     -device virtio-net-pci,netdev=net0 \
     -netdev user,id=net0,hostfwd=tcp::2222-:22 \
