@@ -42,7 +42,7 @@ users:
       - $(ssh-keygen -y -f ~/.ssh/id_ed25519)
 bootcmd:
   #FreeBSD: - sed -i "" 's/#PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
-  - mkdir -p 
+  - mkdir -p /
 mounts:
   - [ host0, / ]
 __EOF__
