@@ -95,7 +95,7 @@ qemu-img resize "${IMAGE}" 32G
 ```
 - Create bootable script
 ```sh
-cd crave-devspaces;touch StartVM.sh;echo "cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt;sudo apt-get update -y;sudo apt-get upgrade -y;cd ~/.vm/ubuntu-amd64;qemu-system-x86_64 \
+cd /crave-devspaces;touch StartVM.sh;echo "cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt;sudo apt-get update -y;sudo apt-get upgrade -y;cd ~/.vm/ubuntu-amd64;qemu-system-x86_64 \
     -m 32G \
     -nographic \
     -device virtio-net-pci,netdev=net0 \
