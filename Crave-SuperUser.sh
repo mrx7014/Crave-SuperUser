@@ -42,9 +42,9 @@ users:
       - $(ssh-keygen -y -f ~/.ssh/id_ed25519)
 bootcmd:
   #FreeBSD: - sed -i "" 's/#PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
-  - mkdir -p /
+  - mkdir -p /crave-devspaces
 mounts:
-  - [ host0, / ]
+  - [ host0, /crave-devspaces ]
 __EOF__
 # Edit this file for OpenBSD or FreeBSD
 clear
@@ -60,13 +60,13 @@ echo "Create bootable script"
 echo "Default RAM size is 2GB, If you want to change it edit the StartVM.sh script -m 32G"
 sleep 2
 cd /crave-devspaces; touch StartVM.sh ; echo "cd /crave-devspaces;git clone https://github.com/mrx7014/Crave-Fixer;cd Crave-Fixer;sudo mv /etc/apt/sources.list /etc/apt/sources.list.old;sudo cp /crave-devspaces/Crave-Fixer/sources.list /etc/apt; sudo apt-get update -y;sudo apt-get upgrade -y;cd ~/.vm/ubuntu-amd64 ; qemu-system-x86_64 \
-    -m 2G \
+    -m 32G \
     -nographic \
     -device virtio-net-pci,netdev=net0 \
     -netdev user,id=net0,hostfwd=tcp::2222-:22 \
     -drive "if=virtio,format=qcow2,file=ubuntu-22.04-server-cloudimg-amd64.img" \
     -drive "if=virtio,format=raw,file=seed.img" \
-    -virtfs local,path=/,mount_tag=host0,security_model=passthrough" >> StartVM.sh ; chmod +x StartVM.sh > /dev/null 2>1&
+    -virtfs local,path=/crave-devspaces,mount_tag=host0,security_model=passthrough" >> StartVM.sh ; chmod +x StartVM.sh > /dev/null 2>1&
 sleep 2
 echo "Everything is Done,Now use StartVM.sh to start the VM"
 echo "Login info:"
